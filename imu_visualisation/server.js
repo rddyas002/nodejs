@@ -3,17 +3,22 @@
     var url = require('url');
     var request = require('request');
 	var http = require('http');
-		var SerialPort = require('serialport');
+	var SerialPort = require('serialport');
+	
+	/*
 	var port = new SerialPort('COM7', {
-		baudRate: 115200
+		baudRate: 115200,
 	});
+	const parser = port.pipe(new ByteLength({length: 12}));	
 	// Read data that is available but keep the stream from entering "flowing mode"
-	port.on('data', function () {
-		var buffer = port.read();
-		//console.log(buffer.length);
-		//if (data.length == 12)
-//			console.log('Length:', data.readFloatLE(0), data.readFloatLE(1), data.readFloatLE(2),);
-	});
+	port.on('open', function()){
+		console.log('serial port open');
+		port.on('data', function(data)){
+			console.log("Data: " + data.readFloatLE(0) + ", " + data.readFloatLE(1) + ", " + data.readFloatLE(2));
+		}
+	}
+	
+	*/
 
     var yargs = require('yargs').options({
         'port' : {
